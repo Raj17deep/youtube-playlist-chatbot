@@ -1,36 +1,145 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🎬 YouTube Playlist Chat Tool
 
-## Getting Started
+An interactive **Next.js web app** that lets you analyze and chat with your **YouTube playlists** using **AI (Gemini or OpenAI GPT)**.
+Simply enter a playlist URL, fetch details via the **YouTube Data API**, and ask AI-powered questions like:
 
-First, run the development server:
+* *“Which videos have the most views?”*
+* *“What’s the total watch time of this playlist?”*
+* *“Show me recent uploads about a topic.”*
+
+---
+
+## 🚀 Features
+
+✅ **YouTube Playlist Analysis** – Fetches video titles, descriptions, channels, publish dates, views, likes, comments, and durations.
+✅ **AI Chat** – Ask questions about playlist content using Google **Gemini** or **OpenAI GPT**.
+✅ **Interactive UI** – Split view: playlist details on the left, AI chat on the right.
+✅ **Backend Proxy** – Next.js API route (`/api/youtube-proxy`) to bypass **CORS** restrictions.
+✅ **Dynamic Environment Detection** – Works in **local dev**, **Vercel deployment**, or **direct mode**.
+✅ **Customizable Settings** – Enter API keys, switch AI providers, and manage backend connection mode.
+
+---
+
+## 🛠️ Tech Stack
+
+* **Framework**: [Next.js 15](https://nextjs.org/) (App Router)
+* **Frontend**: React 19, TailwindCSS 4, Lucide Icons
+* **Backend Proxy**: Next.js API route (`app/api/youtube-proxy/route.js`)
+* **AI Integration**:
+
+  * Google **Gemini API**
+  * OpenAI **GPT API**
+* **Languages**: TypeScript + JavaScript
+
+---
+
+## 📂 Project Structure
+
+```
+raj17deep-youtube-playlist-chatbot/
+├── app/                      # Next.js App Router
+│   ├── globals.css           # Global styles (Tailwind)
+│   ├── layout.tsx            # Root layout
+│   ├── page.js               # Homepage entry
+│   ├── index.js              # Alternate entry point
+│   └── api/
+│       └── youtube-proxy/    # Backend proxy to YouTube API
+│           └── route.js
+├── components/
+│   └── YouTubePlaylistChatTool.jsx  # Main app component
+├── package.json              # Dependencies & scripts
+├── eslint.config.mjs         # Linting config
+├── postcss.config.mjs        # PostCSS config
+├── tsconfig.json             # TypeScript config
+├── next.config.ts            # Next.js config
+└── README.md                 # Documentation
+```
+
+---
+
+## ⚡ Getting Started
+
+### 1️⃣ Clone the repo
+
+```bash
+git clone https://github.com/your-username/raj17deep-youtube-playlist-chatbot.git
+cd raj17deep-youtube-playlist-chatbot
+```
+
+### 2️⃣ Install dependencies
+
+```bash
+npm install
+# or
+yarn install
+# or
+pnpm install
+```
+
+### 3️⃣ Run the dev server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Now open [http://localhost:3000](http://localhost:3000) 🚀
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🔑 Setup API Keys
 
-## Learn More
+The app requires **two API keys**:
 
-To learn more about Next.js, take a look at the following resources:
+1. **YouTube Data API v3 Key**
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+   * Get it from [Google Cloud Console](https://console.cloud.google.com/apis/credentials).
+   * Needed to fetch playlist/video data.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+2. **AI Provider API Key** (Choose one):
 
-## Deploy on Vercel
+   * **Google Gemini API** → [Get key](https://aistudio.google.com/app/apikey)
+   * **OpenAI API** → [Get key](https://platform.openai.com/account/api-keys)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+➡️ Enter both keys in the **Settings panel** inside the app.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+## ⚙️ Deployment
+
+### **Local Backend Mode (recommended)**
+
+Next.js API proxy (`/api/youtube-proxy`) handles CORS automatically.
+
+### **Deploy to Vercel**
+
+Push your repo to GitHub and [import to Vercel](https://vercel.com/new).
+Vercel automatically detects Next.js and deploys serverless functions.
+
+### **Direct Mode (not recommended)**
+
+If no backend is detected, the app tries to call YouTube APIs directly.
+⚠️ This usually fails due to **CORS restrictions** unless you use a browser extension.
+
+---
+
+## 📸 UI Preview
+
+* **Left Panel** – Playlist videos (thumbnail, title, channel, views, duration, date).
+* **Right Panel** – Chat window with AI assistant.
+* **Settings Panel** – API key management & provider selection.
+
+---
+
+## 🧪 Example Use Cases
+
+* Summarize playlist topics
+* Find the **most popular video**
+* Calculate **total playlist watch time**
+* Identify videos from a **specific channel**
+* Explore **recently added videos**
+
+---
+
+## 📜 License
+
+MIT License – free to use and modify.
